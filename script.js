@@ -1,10 +1,3 @@
-const characters = {
-  lowercase: "abcdefghijklmnopqrstuvwxyz",
-  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  number: "0123456789",
-  specCha: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~",
-}
-
 var generateBtn = document.querySelector("#generate");  // connects to ID on the button so we can listen for a button click. 
 var lowBool
 var upBool
@@ -12,7 +5,7 @@ var numBool
 var specBool 
 var passwordLength 
 
-function generateCharacters() {            // Combines variables to get character list to generate the password
+function generateCharacters() {            // Combines variables to get character list. This function is called by and returned to the generatePassword function
     if ((lowBool == true) && (upBool == true) && (numBool == true) && (specBool == true)) {
       return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
     }
@@ -80,26 +73,26 @@ function generateCharacters() {            // Combines variables to get characte
 
 
 function generatePassword() { 
-  var passwordPrompt = (parseInt(prompt ("How many characters would you like your password to be?", "8 to 128"))) // creates window prompt for character limit and changes user input to an int
+  var passwordPrompt = (parseInt(prompt ("How many characters would you like your password to be?\n(Please input a number between 8 and 128)", "8 to 128"))) // creates window prompt for character limit and changes user input to an int
   if (passwordPrompt >= 8 && passwordPrompt <= 128 ) { // If user submits valid number, continues on to generate password 
     passwordLength = passwordPrompt
 
     // Confirms which characters the user wants
-    lowBool = confirm ("Do you want lowercase letters in your password?")
-    upBool = confirm ("Do you want uppercase letters in your password?")
-    numBool = confirm ("Do you want numbers in your password?")
-    specBool = confirm ("Do you want special characters in your password?")
+    lowBool = confirm ("Do you want lowercase letters in your password?\n(Press okay for yes, press cancel for no.)")
+    upBool = confirm ("Do you want uppercase letters in your password?\n(Press okay for yes, press cancel for no.)")
+    numBool = confirm ("Do you want numbers in your password?\n(Press okay for yes, press cancel for no.)")
+    specBool = confirm ("Do you want special characters in your password?\n(Press okay for yes, press cancel for no.)")
 
-    var passwordCharacters = generateCharacters() 
+    var passwordCharacters = generateCharacters() // Runs a function to create a string based on user input
     var generatedPassword = ""
 
     for (let i = 0; i < passwordLength; i++) {
       generatedPassword += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)]
     }
 
-    return generatedPassword;
+    return generatedPassword; // sends a string to writePassword function
   }
-  else { // Returns a try again message instead of a password
+  else { // Returns a try again message instead of a password if the user gave an invalid length
     return "Please check that you picked a number between 8 and 128 and try again.";
   }
 } 
@@ -114,5 +107,4 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);   // This listens for button click, the runs writePassword function. 
+generateBtn.addEventListener("click", writePassword);   // This listens for "generate password" button click, the runs writePassword function. 
