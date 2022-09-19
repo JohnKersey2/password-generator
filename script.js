@@ -72,6 +72,10 @@ function generateCharacters() {            // Combines variables to get characte
     else if ((specBool == true)) {
       return "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
     }
+
+    else {
+      generatePassword()
+    } 
 }
 
 
