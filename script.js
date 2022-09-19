@@ -5,29 +5,29 @@ var numBool
 var specBool 
 var passwordLength 
 
-function generateCharacters() {            // Combines variables to get character list. This function is called by and returned to the generatePassword function
+function generateCharacters() {  // Combines variables to get character list. This function is called by and returned to the generatePassword function
   var passwordCha = ""
-   if (lowBool == true) {
+   if (lowBool) {
      passwordCha += "abcdefghijklmnopqrstuvwxyz"
    }
 
-   if (upBool == true ) {
+   if (upBool) {
      passwordCha += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
    }
 
-   if (numBool == true ) {
+   if (numBool) {
      passwordCha += "0123456789"
    }
 
-   if (specBool == true) {
+   if (specBool) {
      passwordCha += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
    }
 
-   if ((lowBool == false) && (upBool == false) && (numBool == false) && (specBool == false)) {  // Stops function and warns user they didn't select any character types
+   if (!lowBool && !upBool && !numBool && !specBool) {  // Stops function and warns user they didn't select any character types
      alert("No character types selected. Please try again.")
    }
 
-   if ((lowBool == true) || (upBool == true) || (numBool == true) || (specBool == true)) { // Sends string with user desired characters only if at least one character type selected
+   if (lowBool || upBool || numBool || specBool) { // Sends string with user desired characters only if at least one character type selected
      return passwordCha;
    }
 }
