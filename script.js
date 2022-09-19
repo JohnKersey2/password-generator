@@ -12,18 +12,23 @@ var generateBtn = document.querySelector("#generate");  // connects to ID on the
 var lowBool = true 
 var upBool = true 
 var numBool = true 
-var speBool = true 
+var specBool = true 
 var passwordLength = 8
 
 
-function generateLength() { 
+function generatePassword() { 
   var passwordPrompt = (parseInt(prompt ("How many characters would you like your password to be?", "8 to 128"))) // creates window prompt for character limit and changes user input to an int
   if (passwordPrompt >= 8 && passwordPrompt <= 128 ) {
     passwordLength = passwordPrompt
+    lowBool = confirm ("Do you want lowercase letters in your password?")
+    upBool = confirm ("Do you want uppercase letters in your password?")
+    numBool = confirm ("Do you want numbers in your password?")
+    specBool = confirm ("Do you want special characters in your password?")
   }
   else {
     alert ("Please check that you picked a number between 8 and 128 and try again.")
   }
+  return ;
 } 
 
 
