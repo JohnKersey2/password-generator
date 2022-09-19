@@ -6,69 +6,30 @@ var specBool
 var passwordLength 
 
 function generateCharacters() {            // Combines variables to get character list. This function is called by and returned to the generatePassword function
-    if ((lowBool == true) && (upBool == true) && (numBool == true) && (specBool == true)) {
-      return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    }
+  var passwordCha = ""
+   if (lowBool == true) {
+     passwordCha += "abcdefghijklmnopqrstuvwxyz"
+   }
 
-    else if ((lowBool == true) && (upBool == true) && (numBool == true)) {
-      return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    }
+   if (upBool == true ) {
+     passwordCha += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+   }
 
-    else if ((lowBool == true) && (upBool == true) && (specBool == true)) {
-      return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    }
+   if (numBool == true ) {
+     passwordCha += "0123456789"
+   }
 
-    else if ((lowBool == true) && (numBool == true) && (specBool == true)) {
-      return "abcdefghijklmnopqrstuvwxyz0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    }
+   if (specBool == true) {
+     passwordCha += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+   }
 
-    else if ((upBool == true) && (numBool == true) && (specBool == true)) {
-      return "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    }
+   if ((lowBool == false) && (upBool == false) && (numBool == false) && (specBool == false)) {  // Stops function and warns user they didn't select any character types
+     alert("No character types selected. Please try again.")
+   }
 
-    else if ((lowBool == true) && (upBool == true)) {
-      return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    }
-
-    else if ((lowBool == true)  && (numBool == true)) {
-      return "abcdefghijklmnopqrstuvwxyz0123456789"
-    }
-
-    else if ((lowBool == true) && (specBool == true)) {
-      return "abcdefghijklmnopqrstuvwxyz!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    }
-
-    else if ((upBool == true) && (numBool == true)) {
-      return "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    }
-
-    else if ((upBool == true) && (specBool == true)) {
-      return "ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    }
-
-    else if ((numBool == true) && (specBool == true)) {
-      return "0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    }
-
-    else if ((lowBool == true)) {
-      return "abcdefghijklmnopqrstuvwxyz"
-    }
-
-    else if ((upBool == true)) {
-      return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    }
-
-    else if ((numBool == true)) {
-      return "0123456789"
-    }
-
-    else if ((specBool == true)) {
-      return "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    }
-
-    else {
-      alert("No character types selected. Please try again.")
-    } 
+   if ((lowBool == true) || (upBool == true) || (numBool == true) || (specBool == true)) { // Sends string with user desired characters only if at least one character type selected
+     return passwordCha;
+   }
 }
 
 

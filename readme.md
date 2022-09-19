@@ -12,7 +12,6 @@ For this weeks homework, I was to modify starter code to create a password gener
 
 ![Gif showing functionality of application](passwordgeneratorscreenshot.gif)
 
-
 ## Acceptance Criteria 
 
 According to the user story, my application needed to:
@@ -33,8 +32,6 @@ When all prompts are answer, generate password either in alert or written to pag
 
 Alert added to warn user they did select any character types
 
+Rewrote generateCharacters function to not be a giant if / else if / else if monstrosity. 
 
 ## Future Development Notes
-
-Code can probably be shortened dramatically by changing generateCharacter function. Working idea is to create a variable with a string and then have the function check the variables set for each character type. If true, the function can then add the characters to the new variable, and then have that variable returned to the generatePassword function. 
-
