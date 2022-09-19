@@ -12,6 +12,68 @@ var numBool
 var specBool 
 var passwordLength 
 
+function generateCharacters() {            // Combines variables to get character list to generate the password
+    if ((lowBool == true) && (upBool == true) && (numBool == true) && (specBool == true)) {
+      return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    }
+
+    else if ((lowBool == true) && (upBool == true) && (numBool == true)) {
+      return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    }
+
+    else if ((lowBool == true) && (upBool == true) && (specBool == true)) {
+      return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    }
+
+    else if ((lowBool == true) && (numBool == true) && (specBool == true)) {
+      return "abcdefghijklmnopqrstuvwxyz0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    }
+
+    else if ((upBool == true) && (numBool == true) && (specBool == true)) {
+      return "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    }
+
+    else if ((lowBool == true) && (upBool == true)) {
+      return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    }
+
+    else if ((lowBool == true)  && (numBool == true)) {
+      return "abcdefghijklmnopqrstuvwxyz0123456789"
+    }
+
+    else if ((lowBool == true) && (specBool == true)) {
+      return "abcdefghijklmnopqrstuvwxyz!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    }
+
+    else if ((upBool == true) && (numBool == true)) {
+      return "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    }
+
+    else if ((upBool == true) && (specBool == true)) {
+      return "ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    }
+
+    else if ((numBool == true) && (specBool == true)) {
+      return "0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    }
+
+    else if ((lowBool == true)) {
+      return "abcdefghijklmnopqrstuvwxyz"
+    }
+
+    else if ((upBool == true)) {
+      return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    }
+
+    else if ((numBool == true)) {
+      return "0123456789"
+    }
+
+    else if ((specBool == true)) {
+      return "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    }
+}
+
 
 function generatePassword() { 
   var passwordPrompt = (parseInt(prompt ("How many characters would you like your password to be?", "8 to 128"))) // creates window prompt for character limit and changes user input to an int
@@ -24,14 +86,18 @@ function generatePassword() {
     numBool = confirm ("Do you want numbers in your password?")
     specBool = confirm ("Do you want special characters in your password?")
 
+    var passwordCharacters = generateCharacters() 
+    var generatedPassword = ""
 
+    for (let i = 0; i < passwordLength; i++) {
+      generatedPassword += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)]
+    }
 
-    return ;
+    return generatedPassword;
   }
   else { // Returns a try again message instead of a password
     return "Please check that you picked a number between 8 and 128 and try again.";
   }
-  
 } 
 
 
@@ -46,4 +112,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);   // This listens for button click, the runs writePassword function. 
-
