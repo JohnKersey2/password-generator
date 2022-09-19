@@ -9,25 +9,28 @@ const characters = {
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");  // connects to ID on the button so we can listen for a button click. 
-var lowBool = true;
-var upBool = true;
-var numBool = true;
-var speBool = true;
+var lowBool = true 
+var upBool = true 
+var numBool = true 
+var speBool = true 
 var passwordLength = 8
 
-// window.confirm("sometext");     
-// if (confirm("Press a button!")) {
-// txt = "You pressed OK!";
-// } else {
-//  txt = "You pressed Cancel!";
-// }
+
+function generateLength() { 
+  var passwordPrompt = (parseInt(prompt ("How many characters would you like your password to be?", "8 to 128"))) // creates window prompt for character limit and changes user input to an int
+  if (passwordPrompt >= 8 && passwordPrompt <= 128 ) {
+    passwordLength = passwordPrompt
+  }
+  else {
+    alert ("Please check that you picked a number between 8 and 128 and try again.")
+  }
+} 
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword({  // generate password here. 
-
-  });
+  var password = generatePassword();
+  
   var passwordText = document.querySelector("#password"); // targets password id 
   passwordText.value = password; //rewrites placeholder text to generated password 
 
@@ -37,4 +40,9 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);   // This listens for button click, the runs writePassword function. 
 
 
-// 
+// window.confirm("sometext");     
+// if (confirm("Press a button!")) {
+// txt = "You pressed OK!";
+// } else {
+//  txt = "You pressed Cancel!";
+// }
