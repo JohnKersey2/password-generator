@@ -67,7 +67,7 @@ function generateCharacters() {            // Combines variables to get characte
     }
 
     else {
-      generatePassword()
+      alert("No character types selected. Please try again.")
     } 
 }
 

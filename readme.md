@@ -27,10 +27,12 @@ Validate there was at least one input critera selected before moving on
 
 When all prompts are answer, generate password either in alert or written to page
 
-
 ## Unsolved Issues
 
-Unable to inform user if no critera was selected, so I instead had the generate password function restart if no character types were selected
+## Resolved Issues
+
+Alert added to warn user they did select any character types
+
 
 ## Future Development Notes
 
